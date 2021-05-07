@@ -28,7 +28,7 @@ def openExistingFile(requestText, method):
         fileName = input(requestText)
 
         try:
-            file = open(fileName, 'r')
+            file = open(fileName, method)
             break
         except:
             print("Invalid file provided")
