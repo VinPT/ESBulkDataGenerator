@@ -1,7 +1,5 @@
 def BulkDataGenerator():
 
-    outputFileName = input("Provide output file: ")
-
     with openExistingFile("Provide Mapping File: ", 'r') as mappingFile:
         for line in mappingFile:
             print("This is not something that workes yet.")
@@ -12,11 +10,9 @@ def BulkDataGenerator():
             print(line)
         print("This is not something that workes yet.")
 
-    with openNewFile("Provide output file:", 'w')
-
     print("reformating Data:")
 
-    with open(outputFileName, 'w') as outputFile:
+    with openNewFile("Provide output file:", 'w') as outputFile:
         data = 'Test data to output file'
         outputFile.write(data)
         outputFile.write(firstline)
@@ -44,7 +40,7 @@ def openNewFile(requestText, method):
     while True:
         fileName = input(requestText)
 
-        if os.path.exists(fileName):
+        if not os.path.exists(fileName):
             file = open(fileName, 'w')
             break
         else:
