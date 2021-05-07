@@ -1,13 +1,12 @@
 def BulkDataGenerator():
-    mappingFileName = input("Provide mapping file: ")
     outputFileName = input("Provide output file: ")
 
-    with open(mappingFileName, 'r') as mappingFile:
+    with openExistingFile("Provide Mapping File: ", 'r') as mappingFile:
         for line in mappingFile:
             print("This is not something that workes yet.")
             firstline = line
 
-    with openDataFile("Provide data file: ") as dataFile:
+    with openExistingFile("Provide data file: ", 'r') as dataFile:
         for line in dataFile:
             print(line)
         print("This is not something that workes yet.")
@@ -22,7 +21,9 @@ def BulkDataGenerator():
     print("done!")
 
 
-def openDataFile(requestText):
+def openExistingFile(requestText, method):
+
+    assert method == 'r' or method == 'a', "Invalid file access method provided"
     while True:
         fileName = input(requestText)
 
