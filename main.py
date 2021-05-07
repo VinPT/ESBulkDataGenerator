@@ -1,4 +1,5 @@
 def BulkDataGenerator():
+
     outputFileName = input("Provide output file: ")
 
     with openExistingFile("Provide Mapping File: ", 'r') as mappingFile:
@@ -10,6 +11,8 @@ def BulkDataGenerator():
         for line in dataFile:
             print(line)
         print("This is not something that workes yet.")
+
+    with openNewFile("Provide output file:", 'w')
 
     print("reformating Data:")
 
@@ -32,6 +35,25 @@ def openExistingFile(requestText, method):
             break
         except:
             print("Invalid file provided")
+    return file
+
+
+def openNewFile(requestText, method):
+    import os.path
+    assert method == 'w', "Invalid file access method must be 'w'"
+    while True:
+        fileName = input(requestText)
+
+        if os.path.exists(fileName):
+            file = open(fileName, 'w')
+            break
+        else:
+            print("Invalid File already exists")
+            input("Would you like to over-write the file(enter Y to conferm):")
+            if input == 'Y' or input == 'y':
+                file = open(fileName, 'w')
+                break
+
     return file
 
 
